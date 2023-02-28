@@ -23,3 +23,12 @@ https://restcountries.com/v2/name/peru
 
 https://restcountries.com/v2/name/united
 */
+
+/*
+ function renderCountrisName(arrayCountriesName) {
+    const markup = arrayCountriesName.map(({name, flags}) => {
+        return `<li><img src="${flags.svg}" alt="${flags.alt}" width="25" height="15"><span>${name.common}</span></li>`;
+    }).join("");
+    countriesList.innerHTML = markup;
+}
+*/
