@@ -10,7 +10,9 @@ const countryInfoLnk = document.querySelector(".country-info");
 
 inputLnk.addEventListener("input", debounce(onInput, DEBOUNCE_DELAY));
 function onInput(e) { 
-    
+    e.preventDefault();
+    let countryName = String(e.target.value).trim();
+    console.log(countryName);
 }
 //debounce()
 //Notify.info("hello world!");
