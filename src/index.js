@@ -13,7 +13,8 @@ const countryInfoLnk = document.querySelector(".country-info");
 inputLnk.addEventListener("input", debounce(onInput, DEBOUNCE_DELAY));
 function onInput(e) { 
     e.preventDefault();
-    let countryName = String(e.target.value).trim();
+    e.target.value = String(e.target.value).trim();
+    let countryName = String(e.target.value);
     if (countryName.length) {
         console.log(countryName);
         fetchCountries(countryName);
