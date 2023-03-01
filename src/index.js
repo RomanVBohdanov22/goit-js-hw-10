@@ -17,7 +17,17 @@ function onInput(e) {
     let countryName = String(e.target.value);
     if (countryName.length) {
         console.log(countryName);
-        fetchCountries(countryName);
+        fetchCountries(countryName)
+                // --> to render
+    .then(data => {
+      // Data handling
+        if (data.length > 10) Notify.info("Too many matches found. Please enter a more specific name.");
+      console.log(data);
+    })
+    .catch(error => {
+      console.log(error);
+      // Error handling
+    }); // <--  to render;
     }
 }
 //debounce()
