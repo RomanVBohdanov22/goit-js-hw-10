@@ -4,9 +4,14 @@ var debounce = require('lodash.debounce');
 const DEBOUNCE_DELAY = 300;
 
 
-const inputLnk = document.querySelector("#search-box");
+const inputLnk = document.querySelector("input#search-box");
 const countryUlistLnk = document.querySelector(".country-list");
 const countryInfoLnk = document.querySelector(".country-info");
+
+inputLnk.addEventListener("input", debounce(onInput, DEBOUNCE_DELAY));
+function onInput(e) { 
+    
+}
 //debounce()
 //Notify.info("hello world!");
 /*
