@@ -17,6 +17,7 @@ function onInput(e) {
     let countryName = String(e.target.value);
     if (countryName.length) {
         console.log(countryName);
+
         fetchCountries(countryName)
                 // --> to render
     .then(data => {
@@ -30,6 +31,8 @@ function onInput(e) {
     }); // <--  to render;
     }
 }
+
+
 //debounce()
 //Notify.info("hello world!");
 /*
