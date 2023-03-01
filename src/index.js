@@ -1,6 +1,8 @@
 import './css/styles.css';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 var debounce = require('lodash.debounce');
+import { fetchCountries } from './js/fetchCountries';
+
 const DEBOUNCE_DELAY = 300;
 
 
@@ -12,7 +14,10 @@ inputLnk.addEventListener("input", debounce(onInput, DEBOUNCE_DELAY));
 function onInput(e) { 
     e.preventDefault();
     let countryName = String(e.target.value).trim();
-    console.log(countryName);
+    if (countryName.length) {
+        console.log(countryName);
+        fetchCountries(countryName);
+    }
 }
 //debounce()
 //Notify.info("hello world!");
