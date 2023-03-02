@@ -12,8 +12,9 @@ export function fetchCountries(name) {
   console.log(`${searchUrl}`);
   const respo = fetch(searchUrl)
     .then(response => {
-      if (!response.ok) {
-        throw new Error(response.status);
+        if (!response.ok) {
+          //response.status===
+        throw new Error(response.status + " Oops, there is no country with that name" );
         }       
       return response.json();
     })
