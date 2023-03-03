@@ -55,12 +55,12 @@ const countryName = data[0].name.official;
     const countryCapital = data[0].capital[0];
     const countryFlag = data[0].flags.svg;
   const countryPopulation = data[0].population;
-  const countryLanguages = data.map(({ languages }) => { return `${languages}`; }).join(", ");
+  //const countryLanguages = data[0].map(( languages ) => { return `${languages}`; }).join(", ");
     console.log(countryName);
     console.log(countryCapital);
     console.log(countryFlag);
   console.log(countryPopulation);
-  console.log(countryLanguages);
+  //console.log(countryLanguages);
 
   console.log(data);
 }
