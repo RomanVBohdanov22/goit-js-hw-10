@@ -60,7 +60,8 @@ function renderCountriesTable(data) {
   const listMarkup = data.map(({ name, flags }) => {
     return `<li><img src="${flags.svg}" alt="${flags.alt}" width="25" height="15"><span>${name.common}</span>`;
   }).join("");
-  countryListLnk.innerHTML = listMarkup;
+  //countryListLnk.innerHTML = listMarkup;
+  insertAdjacentHTML("afterbegin", listMarkup);
 }
 //debounce()
 //Notify.info("hello world!");
