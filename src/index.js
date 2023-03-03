@@ -31,12 +31,16 @@ function onInput(e) {
         ///console.log(data);
       })
       .catch(error => {
-          //Notify.failure(error);
-          Notify.failure(`${error} ( Oops, there is no country with that name )`);
-          //alert(`${error} Oops, there is no country with that name`);
+        //Notify.failure(error);
+        Notify.failure(`${error} ( Oops, there is no country with that name )`);
+        //alert(`${error} Oops, there is no country with that name`);
         console.log(error);
         // Error handling
       }); // <--  to render;
+  }
+  else { 
+      countryListLnk.innerHTML = "";
+      countryInfoLnk.innerHTML = "";
   }
 }
 
