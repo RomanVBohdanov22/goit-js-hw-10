@@ -44,7 +44,14 @@ function onInput(e) {
 
 function renderCoutries(data) {
   if (data.length <= 1) {
-    const countryName = data[0].name.official;
+    renderOneCountry(data)
+  }
+  else renderCountriesTable(data);
+  console.log(data);
+}
+
+function renderOneCountry(data) { 
+const countryName = data[0].name.official;
     const countryCapital = data[0].capital[0];
     const countryFlag = data[0].flags.svg;
     const countryPopulation = data[0].population;
@@ -52,11 +59,7 @@ function renderCoutries(data) {
     console.log(countryCapital);
     console.log(countryFlag);
     console.log(countryPopulation);
-  }
-  else renderCountriesTable(data);
-  console.log(data);
 }
-
 function renderCountriesTable(data) { 
   countryListLnk.innerHTML = "";
   const listMarkup = data.map(({ name, flags }) => {
