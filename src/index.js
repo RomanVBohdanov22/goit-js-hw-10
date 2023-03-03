@@ -61,7 +61,7 @@ function renderCountriesTable(data) {
     return `<li><img src="${flags.svg}" alt="${flags.alt}" width="25" height="15"><span>${name.common}</span>`;
   }).join("");
   //countryListLnk.innerHTML = listMarkup;
-  insertAdjacentHTML("afterbegin", listMarkup);
+  countryListLnk.insertAdjacentHTML("afterbegin", listMarkup);
 }
 //debounce()
 //Notify.info("hello world!");
