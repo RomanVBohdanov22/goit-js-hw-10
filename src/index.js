@@ -6,7 +6,7 @@ import { fetchCountries } from './js/fetchCountries';
 const DEBOUNCE_DELAY = 300;
 
 const inputLnk = document.querySelector('input#search-box');
-const countryUlistLnk = document.querySelector('.country-list');
+const countryListLnk = document.querySelector('.country-list');
 const countryInfoLnk = document.querySelector('.country-info');
 
 inputLnk.addEventListener('input', debounce(onInput, DEBOUNCE_DELAY));
@@ -44,16 +44,23 @@ function renderCoutries(data) {
   if (data.length <= 1) {
     const countryName = data[0].name.official;
     const countryCapital = data[0].capital[0];
-      const countryFlag = data[0].flags.svg;
-      const countryPopulation = data[0].population;
+    const countryFlag = data[0].flags.svg;
+    const countryPopulation = data[0].population;
     console.log(countryName);
     console.log(countryCapital);
-      console.log(countryFlag);
-      console.log(countryPopulation);
+    console.log(countryFlag);
+    console.log(countryPopulation);
   }
+  else renderCountriesTable(data);
   console.log(data);
 }
 
+function renderCountriesTable(data) { 
+  const listMarkup = data.map(({ name, flags }) => {
+    return `<li><img src="${flags.svg}" alt="${flags.alt}" width="25" height="15"><span>${name.common}</span>`;
+  }).join("");
+  countryListLnk.innerHTML = listMarkup;
+}
 //debounce()
 //Notify.info("hello world!");
 /*
