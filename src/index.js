@@ -12,6 +12,8 @@ const countryInfoLnk = document.querySelector('.country-info');
 inputLnk.addEventListener('input', debounce(onInput, DEBOUNCE_DELAY));
 function onInput(e) {
   e.preventDefault();
+  countryListLnk.innerHTML = "";
+  countryInfoLnk.innerHTML = "";
   e.target.value = String(e.target.value).trim();
   let countryName = String(e.target.value);
   if (countryName.length) {
@@ -37,11 +39,7 @@ function onInput(e) {
         console.log(error);
         // Error handling
       }); // <--  to render;
-  }
-  else { 
-      countryListLnk.innerHTML = "";
-      countryInfoLnk.innerHTML = "";
-  }
+  } 
 }
 
 function renderCoutries(data) {
