@@ -47,7 +47,7 @@ function renderCoutries(data) {
     renderOneCountry(data)
   }
   else renderCountriesTable(data);
-  console.log(data);
+  //console.log(data);
 }
 
 function renderOneCountry(data) { 
@@ -55,12 +55,14 @@ const countryName = data[0].name.official;
     const countryCapital = data[0].capital[0];
     const countryFlag = data[0].flags.svg;
   const countryPopulation = data[0].population;
-  const countryLanguages = data.countryLanguages.map((languages) => { return languages; }).join(",");
+  const countryLanguages = data[0].countryLanguages;
     console.log(countryName);
     console.log(countryCapital);
     console.log(countryFlag);
   console.log(countryPopulation);
   console.log(countryLanguages);
+
+  console.log(data);
 }
 function renderCountriesTable(data) { 
   countryListLnk.innerHTML = "";
