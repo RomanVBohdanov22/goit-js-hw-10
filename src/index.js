@@ -53,17 +53,26 @@ function renderOneCountry(data) {
   const countryName = data[0].name.official;
   const countryCapital = data[0].capital[0];
   const countryFlag = data[0].flags.svg;
+  const countryFlagAlt = data[0].flags.alt;
   const countryPopulation = data[0].population;
+  const countryLanguages = Object.values(data[0].languages).join(', ');
   //const countryLanguages = data[0].map(( languages ) => { return `${languages}`; }).join(", ");
   //Добрый вечер, <p><b>Languages:</b>${Object.values(languages).join(", ")}</p>
+  console.log(countryFlag);
+  console.log(countryFlagAlt);
   console.log(countryName);
   console.log(countryCapital);
-  console.log(countryFlag);
   console.log(countryPopulation);
-  const countryLanguages = Object.values(data[0].languages).join(', ');
   console.log(countryLanguages);
 
-  console.log(data);
+  const cardMarkup = `<h2><img src="${countryFlag}" alt="${countryFlagAlt}" width="50" height="30"> <b>${countryName}</b></h2>`;
+  cardMarkup += `<p><b>Capital:</b> <span><br>${countryCapital}</span></p>`;
+  cardMarkup += `<p><b>Population:</b> <span><br>${countryPopulation}</span></p>`;
+  cardMarkup += `<p><b>Languages:</b> <span><br>${countryLanguages}</span></p>`;
+
+  countryInfoLnk.insertAdjacentHTML('afterbegin', cardMarkup);
+  //console.log(data);
+
 }
 function renderCountriesTable(data) {
   countryListLnk.innerHTML = '';
