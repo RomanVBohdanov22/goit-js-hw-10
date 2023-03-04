@@ -30,12 +30,9 @@ function onInput(e) {
           return;
         }
         renderCoutries(data);
-        ///console.log(data);
       })
       .catch(error => {
-        //Notify.failure(error);
-        Notify.failure(`${error} ( Oops, there is no country with that name )`);
-        //alert(`${error} Oops, there is no country with that name`);
+        Notify.failure(`Oops, there is no country with that name`);
         console.log(error);
         // Error handling
       }); // <--  to render;
@@ -46,7 +43,6 @@ function renderCoutries(data) {
   if (data.length <= 1) {
     renderOneCountry(data);
   } else renderCountriesTable(data);
-  //console.log(data);
 }
 
 function renderOneCountry(data) {
@@ -56,24 +52,14 @@ function renderOneCountry(data) {
   const countryFlagAlt = data[0].flags.alt;
   const countryPopulation = data[0].population;
   const countryLanguages = Object.values(data[0].languages).join(', ');
-  //const countryLanguages = data[0].map(( languages ) => { return `${languages}`; }).join(", ");
-  //Добрый вечер, <p><b>Languages:</b>${Object.values(languages).join(", ")}</p>
-  console.log(countryFlag);
-  console.log(countryFlagAlt);
-  console.log(countryName);
-  console.log(countryCapital);
-  console.log(countryPopulation);
-  console.log(countryLanguages);
 
   let cardMarkup = `<h2><img src="${countryFlag}" alt="${countryFlagAlt}" width="50" height="30"> <b>${countryName}</b></h2>`;
   cardMarkup += `<p><b>Capital:</b> <span>${countryCapital}</span></p>`;
   cardMarkup += `<p><b>Population:</b> <span>${countryPopulation}</span></p>`;
   cardMarkup += `<p><b>Languages:</b> <span>${countryLanguages}</span></p>`;
 
-  console.log(cardMarkup);
   countryListLnk.innerHTML = '';
   countryInfoLnk.insertAdjacentHTML('afterbegin', cardMarkup);
-  //console.log(data);
 
 }
 function renderCountriesTable(data) {
@@ -86,8 +72,8 @@ function renderCountriesTable(data) {
   //countryListLnk.innerHTML = listMarkup;
   countryListLnk.insertAdjacentHTML('afterbegin', listMarkup);
 }
-//debounce()
-//Notify.info("hello world!");
+
+
 /*
 
 https://restcountries.com/#filter-response
@@ -101,13 +87,4 @@ https://restcountries.com/v2/name/{name}
 https://restcountries.com/v2/name/peru
 
 https://restcountries.com/v2/name/united
-*/
-
-/*
- function renderCountrisName(arrayCountriesName) {
-    const markup = arrayCountriesName.map(({name, flags}) => {
-        return `<li><img src="${flags.svg}" alt="${flags.alt}" width="25" height="15"><span>${name.common}</span></li>`;
-    }).join("");
-    countriesList.innerHTML = markup;
-}
 */
