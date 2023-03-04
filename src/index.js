@@ -20,7 +20,6 @@ function onInput(e) {
     console.log(countryName);
 
     fetchCountries(countryName)
-      // --> to render
       .then(data => {
         // Data handling
         if (data.length > 10) {
@@ -35,8 +34,7 @@ function onInput(e) {
         Notify.failure(`Oops, there is no country with that name`);
         console.log(error);
         // Error handling
-      }); // <--  to render;
-  }
+      }); 
 }
 
 function renderCoutries(data) {
@@ -45,20 +43,20 @@ function renderCoutries(data) {
   } else renderCountriesTable(data);
 }
 
-function renderOneCountry(data) {
-  const countryName = data[0].name.official;
-  const countryCapital = data[0].capital;//[0];
-  const countryFlag = data[0].flags.svg;
-  const countryFlagAlt = data[0].flags.alt;
-  const countryPopulation = data[0].population;
-  const countryLanguages = Object.values(data[0].languages).join(', ');
+function renderOneCountry([data]) {
+  const countryName = data.name.official;
+  const countryCapital = data.capital;//[0];
+  const countryFlag = data.flags.svg;
+  const countryFlagAlt = data.flags.alt;
+  const countryPopulation = data.population;
+  const countryLanguages = Object.values(data.languages).join(', ');
 
   let cardMarkup = `<h2><img src="${countryFlag}" alt="${countryFlagAlt}" width="50" height="30"> <b>${countryName}</b></h2>`;
   cardMarkup += `<p><b>Capital:</b> <span>${countryCapital}</span></p>`;
   cardMarkup += `<p><b>Population:</b> <span>${countryPopulation}</span></p>`;
   cardMarkup += `<p><b>Languages:</b> <span>${countryLanguages}</span></p>`;
 
-  countryListLnk.innerHTML = '';
+  //countryListLnk.innerHTML = '';
   countryInfoLnk.insertAdjacentHTML('afterbegin', cardMarkup);
 
 }
