@@ -47,7 +47,7 @@ function renderCoutries(data) {
 
 function renderOneCountry(data) {
   const countryName = data[0].name.official;
-  const countryCapital = data[0].capital[0];
+  const countryCapital = data[0].capital;//[0];
   const countryFlag = data[0].flags.svg;
   const countryFlagAlt = data[0].flags.alt;
   const countryPopulation = data[0].population;
