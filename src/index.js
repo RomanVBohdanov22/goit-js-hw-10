@@ -65,11 +65,13 @@ function renderOneCountry(data) {
   console.log(countryPopulation);
   console.log(countryLanguages);
 
-  const cardMarkup = `<h2><img src="${countryFlag}" alt="${countryFlagAlt}" width="50" height="30"> <b>${countryName}</b></h2>`;
-  cardMarkup += `<p><b>Capital:</b> <span><br>${countryCapital}</span></p>`;
-  cardMarkup += `<p><b>Population:</b> <span><br>${countryPopulation}</span></p>`;
-  cardMarkup += `<p><b>Languages:</b> <span><br>${countryLanguages}</span></p>`;
+  let cardMarkup = `<h2><img src="${countryFlag}" alt="${countryFlagAlt}" width="50" height="30"> <b>${countryName}</b></h2>`;
+  cardMarkup += `<p><b>Capital:</b> <span>${countryCapital}</span></p>`;
+  cardMarkup += `<p><b>Population:</b> <span>${countryPopulation}</span></p>`;
+  cardMarkup += `<p><b>Languages:</b> <span>${countryLanguages}</span></p>`;
 
+  console.log(cardMarkup);
+  countryListLnk.innerHTML = '';
   countryInfoLnk.insertAdjacentHTML('afterbegin', cardMarkup);
   //console.log(data);
 
