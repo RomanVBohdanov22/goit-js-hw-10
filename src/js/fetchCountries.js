@@ -9,7 +9,7 @@ https://restcountries.com/v2/all?fields=name,capital,currencies
 
 export function fetchCountries(name) {
   const searchUrl = BASE_URL + String(name) + FIELDS;
-  console.log(`${searchUrl}`);
+  //console.log(`${searchUrl}`);
   const respo = fetch(searchUrl)
     .then(response => {
         if (!response.ok) {

@@ -17,8 +17,7 @@ function onInput(e) {
   e.target.value = String(e.target.value).trim();
   let countryName = String(e.target.value);
   if (countryName.length) {
-    console.log(countryName);
-
+    //console.log(countryName);
     fetchCountries(countryName)
       .then(data => {
         // Data handling
