@@ -18,3 +18,13 @@ body {
   max-width: 320px;
   margin-bottom: 16px;
 }
+/*My styles*/
+.country-list {
+  margin-left: 0;
+  padding-left: 0;
+  list-style: none;
+}
+.country-list img {
+  margin-left: 0;
+  margin-right: 8px;
+}
