@@ -12,8 +12,8 @@ const countryInfoLnk = document.querySelector('.country-info');
 inputLnk.addEventListener('input', debounce(onInput, DEBOUNCE_DELAY));
 function onInput(e) {
   e.preventDefault();
-  countryListLnk.innerHTML = "";
-  countryInfoLnk.innerHTML = "";
+  countryListLnk.innerHTML = '';
+  countryInfoLnk.innerHTML = '';
   e.target.value = String(e.target.value).trim();
   let countryName = String(e.target.value);
   if (countryName.length) {
@@ -39,38 +39,41 @@ function onInput(e) {
         console.log(error);
         // Error handling
       }); // <--  to render;
-  } 
+  }
 }
 
 function renderCoutries(data) {
   if (data.length <= 1) {
-    renderOneCountry(data)
-  }
-  else renderCountriesTable(data);
+    renderOneCountry(data);
+  } else renderCountriesTable(data);
   //console.log(data);
 }
 
-function renderOneCountry(data) { 
-const countryName = data[0].name.official;
-    const countryCapital = data[0].capital[0];
-    const countryFlag = data[0].flags.svg;
+function renderOneCountry(data) {
+  const countryName = data[0].name.official;
+  const countryCapital = data[0].capital[0];
+  const countryFlag = data[0].flags.svg;
   const countryPopulation = data[0].population;
   //const countryLanguages = data[0].map(( languages ) => { return `${languages}`; }).join(", ");
-    console.log(countryName);
-    console.log(countryCapital);
-    console.log(countryFlag);
+  //Добрый вечер, <p><b>Languages:</b>${Object.values(languages).join(", ")}</p>
+  console.log(countryName);
+  console.log(countryCapital);
+  console.log(countryFlag);
   console.log(countryPopulation);
-  //console.log(countryLanguages);
+  const countryLanguages = Object.values(data[0].languages).join(', ');
+  console.log(countryLanguages);
 
   console.log(data);
 }
-function renderCountriesTable(data) { 
-  countryListLnk.innerHTML = "";
-  const listMarkup = data.map(({ name, flags }) => {
-    return `<li><img src="${flags.svg}" alt="${flags.alt}" width="25" height="15"><span>${name.common}</span>`;
-  }).join("");
+function renderCountriesTable(data) {
+  countryListLnk.innerHTML = '';
+  const listMarkup = data
+    .map(({ name, flags }) => {
+      return `<li><img src="${flags.svg}" alt="${flags.alt}" width="25" height="15"><span>${name.common}</span>`;
+    })
+    .join('');
   //countryListLnk.innerHTML = listMarkup;
-  countryListLnk.insertAdjacentHTML("afterbegin", listMarkup);
+  countryListLnk.insertAdjacentHTML('afterbegin', listMarkup);
 }
 //debounce()
 //Notify.info("hello world!");
