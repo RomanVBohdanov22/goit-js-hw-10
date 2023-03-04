@@ -12,12 +12,10 @@ const countryInfoLnk = document.querySelector('.country-info');
 inputLnk.addEventListener('input', debounce(onInput, DEBOUNCE_DELAY));
 function onInput(e) {
   e.preventDefault();
-  countryListLnk.innerHTML = '';
-  countryInfoLnk.innerHTML = '';
-  e.target.value = String(e.target.value).trim();
-  let countryName = String(e.target.value);
+  resetPanels();
+  let countryName = e.target.value.trim();
   if (countryName.length) {
-    //console.log(countryName);
+
     fetchCountries(countryName)
       .then(data => {
         // Data handling
@@ -33,18 +31,23 @@ function onInput(e) {
         Notify.failure(`Oops, there is no country with that name`);
         console.log(error);
         // Error handling
-      }); 
+      });
+  }
 }
 
+function resetPanels() { 
+  countryListLnk.innerHTML = '';
+  countryInfoLnk.innerHTML = '';
+}
 function renderCoutries(data) {
-  if (data.length <= 1) {
+  if (data.length === 1) {
     renderOneCountry(data);
   } else renderCountriesTable(data);
 }
 
 function renderOneCountry([data]) {
   const countryName = data.name.official;
-  const countryCapital = data.capital;//[0];
+  const countryCapital = data.capital;
   const countryFlag = data.flags.svg;
   const countryFlagAlt = data.flags.alt;
   const countryPopulation = data.population;
@@ -55,7 +58,7 @@ function renderOneCountry([data]) {
   cardMarkup += `<p><b>Population:</b> <span>${countryPopulation}</span></p>`;
   cardMarkup += `<p><b>Languages:</b> <span>${countryLanguages}</span></p>`;
 
-  //countryListLnk.innerHTML = '';
+
   countryInfoLnk.insertAdjacentHTML('afterbegin', cardMarkup);
 
 }
@@ -66,22 +69,8 @@ function renderCountriesTable(data) {
       return `<li><img src="${flags.svg}" alt="${flags.alt}" width="25" height="15"><span>${name.common}</span>`;
     })
     .join('');
-  //countryListLnk.innerHTML = listMarkup;
+
   countryListLnk.insertAdjacentHTML('afterbegin', listMarkup);
 }
 
 
-/*
-
-https://restcountries.com/#filter-response
-
-Name
-
-Search by country name. It can be the native name or partial name
-
-https://restcountries.com/v2/name/{name}
-
-https://restcountries.com/v2/name/peru
-
-https://restcountries.com/v2/name/united
-*/
